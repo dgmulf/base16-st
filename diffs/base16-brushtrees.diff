@@ -23,14 +23,14 @@ index 0e01717..c288227 100644
 -	"cyan3",
 -	"gray90",
 +    /* 8 normal colors */
-+	[0] = "#E3EFEF", /* black   */
++	[0] = "#e3efef", /* black   */
 +	[1] = "#b38686", /* red     */
 +	[2] = "#87b386", /* green   */
 +	[3] = "#aab386", /* yellow  */
 +	[4] = "#868cb3", /* blue    */
 +	[5] = "#b386b2", /* magenta */
 +	[6] = "#86b3b3", /* cyan    */
-+	[7] = "#6D828E", /* white   */
++	[7] = "#6d828e", /* white   */
  
  	/* 8 bright colors */
 -	"gray50",
@@ -41,7 +41,7 @@ index 0e01717..c288227 100644
 -	"magenta",
 -	"cyan",
 -	"white",
-+	[8]  = "#98AFB5", /* black   */
++	[8]  = "#98afb5", /* black   */
 +	[9]  = "#b38686", /* red     */
 +	[10] = "#87b386", /* green   */
 +	[11] = "#aab386", /* yellow  */

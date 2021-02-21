@@ -41,7 +41,7 @@ index 0e01717..c288227 100644
 -	"magenta",
 -	"cyan",
 -	"white",
-+	[8]  = "#6C8B91", /* black   */
++	[8]  = "#6c8b91", /* black   */
 +	[9]  = "#ff5a67", /* red     */
 +	[10] = "#7fc06e", /* green   */
 +	[11] = "#ffcc1b", /* yellow  */

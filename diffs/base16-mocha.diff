@@ -23,7 +23,7 @@ index 0e01717..c288227 100644
 -	"cyan3",
 -	"gray90",
 +    /* 8 normal colors */
-+	[0] = "#3B3228", /* black   */
++	[0] = "#3b3228", /* black   */
 +	[1] = "#cb6077", /* red     */
 +	[2] = "#beb55b", /* green   */
 +	[3] = "#f4bc87", /* yellow  */

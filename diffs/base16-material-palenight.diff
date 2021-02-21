@@ -23,14 +23,14 @@ index 0e01717..c288227 100644
 -	"cyan3",
 -	"gray90",
 +    /* 8 normal colors */
-+	[0] = "#292D3E", /* black   */
-+	[1] = "#F07178", /* red     */
-+	[2] = "#C3E88D", /* green   */
-+	[3] = "#FFCB6B", /* yellow  */
-+	[4] = "#82AAFF", /* blue    */
-+	[5] = "#C792EA", /* magenta */
-+	[6] = "#89DDFF", /* cyan    */
-+	[7] = "#959DCB", /* white   */
++	[0] = "#292d3e", /* black   */
++	[1] = "#f07178", /* red     */
++	[2] = "#c3e88d", /* green   */
++	[3] = "#ffcb6b", /* yellow  */
++	[4] = "#82aaff", /* blue    */
++	[5] = "#c792ea", /* magenta */
++	[6] = "#89ddff", /* cyan    */
++	[7] = "#959dcb", /* white   */
  
  	/* 8 bright colors */
 -	"gray50",
@@ -41,14 +41,14 @@ index 0e01717..c288227 100644
 -	"magenta",
 -	"cyan",
 -	"white",
-+	[8]  = "#676E95", /* black   */
-+	[9]  = "#F07178", /* red     */
-+	[10] = "#C3E88D", /* green   */
-+	[11] = "#FFCB6B", /* yellow  */
-+	[12] = "#82AAFF", /* blue    */
-+	[13] = "#C792EA", /* magenta */
-+	[14] = "#89DDFF", /* cyan    */
-+	[15] = "#FFFFFF", /* white   */
++	[8]  = "#676e95", /* black   */
++	[9]  = "#f07178", /* red     */
++	[10] = "#c3e88d", /* green   */
++	[11] = "#ffcb6b", /* yellow  */
++	[12] = "#82aaff", /* blue    */
++	[13] = "#c792ea", /* magenta */
++	[14] = "#89ddff", /* cyan    */
++	[15] = "#ffffff", /* white   */
  
  	[255] = 0,
  

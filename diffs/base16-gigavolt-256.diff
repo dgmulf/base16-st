@@ -1,0 +1,89 @@
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..7366830 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,33 +93,39 @@ char *termname = "st-256color";
+  */
+ unsigned int tabspaces = 8;
+ 
+-/* Terminal colors (16 first used in escape sequence) */
++/* Terminal colors (16 first used in escape sequence)
++ * Base16 Gigavolt scheme by Aidan Swope (http://github.com/Whillikers)
++ */
+ static const char *colorname[] = {
+ 	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++	[0] = "#202126", /* base00 */
++	[1] = "#ff661a", /* base08 */
++	[2] = "#f2e6a9", /* base0B */
++	[3] = "#ffdc2d", /* base0A */
++	[4] = "#40bfff", /* base0D */
++	[5] = "#ae94f9", /* base0E */
++	[6] = "#fb6acb", /* base0C */
++	[7] = "#e9e7e1", /* base05 */
+ 
+ 	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
++	[8] = "#a1d2e6", /* base03 */
++	[9] = "#ff661a", /* base08 */
++	[10] = "#f2e6a9", /* base0B */
++	[11] = "#ffdc2d", /* base0A */
++	[12] = "#40bfff", /* base0D */
++	[13] = "#ae94f9", /* base0E */
++	[14] = "#fb6acb", /* base0C */
++	[15] = "#f2fbff", /* base0F */
++
++	/* extra base16 colors */
++	[16] = "#19f988", /* base09 */
++	[17] = "#6187ff", /* base0F */
++	[18] = "#2d303d", /* base01 */
++	[19] = "#5a576e", /* base02 */
++	[20] = "#cad3ff", /* base04 */
++	[21] = "#eff0f9", /* base06 */
+ 
+ 	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+ };
+ 
+ 
+@@ -129,8 +135,8 @@ static const char *colorname[] = {
+  */
+ unsigned int defaultfg = 7;
+ unsigned int defaultbg = 0;
+-static unsigned int defaultcs = 256;
+-static unsigned int defaultrcs = 257;
++static unsigned int defaultcs = 7;
++static unsigned int defaultrcs = 0;
+ 
+ /*
+  * Default shape of cursor
+diff --git a/x.c b/x.c
+index 120e495..da3ec4b 100644
+--- a/x.c
++++ b/x.c
+@@ -754,7 +754,7 @@ xloadcolor(int i, const char *name, Color *ncolor)
+ 	XRenderColor color = { .alpha = 0xffff };
+ 
+ 	if (!name) {
+-		if (BETWEEN(i, 16, 255)) { /* 256 color */
++		if (BETWEEN(i, 22, 255)) { /* 256 color */
+ 			if (i < 6*6*6+16) { /* same colors as xterm */
+ 				color.red   = sixd_to_16bit( ((i-16)/36)%6 );
+ 				color.green = sixd_to_16bit( ((i-16)/6) %6 );
