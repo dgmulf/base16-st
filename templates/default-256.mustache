@@ -1,0 +1,78 @@
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..d19e599 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,33 +93,39 @@ char *termname = "st-256color";
+  */
+ unsigned int tabspaces = 8;
+ 
+-/* Terminal colors (16 first used in escape sequence) */
++/* Terminal colors (16 first used in escape sequence)
++ * Base16 {{scheme-name}} scheme by {{scheme-author}}
++ */
+ static const char *colorname[] = {
+ 	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++	[0] = "#{{base00-hex}}", /* base00 */
++	[1] = "#{{base08-hex}}", /* base08 */
++	[2] = "#{{base0B-hex}}", /* base0B */
++	[3] = "#{{base0A-hex}}", /* base0A */
++	[4] = "#{{base0D-hex}}", /* base0D */
++	[5] = "#{{base0E-hex}}", /* base0E */
++	[6] = "#{{base0C-hex}}", /* base0C */
++	[7] = "#{{base05-hex}}", /* base05 */
+ 
+ 	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
++	[8] = "#{{base03-hex}}", /* base03 */
++	[9] = "#{{base08-hex}}", /* base08 */
++	[10] = "#{{base0B-hex}}", /* base0B */
++	[11] = "#{{base0A-hex}}", /* base0A */
++	[12] = "#{{base0D-hex}}", /* base0D */
++	[13] = "#{{base0E-hex}}", /* base0E */
++	[14] = "#{{base0C-hex}}", /* base0C */
++	[15] = "#{{base07-hex}}", /* base0F */
++
++	/* extra base16 colors */
++	[16] = "#{{base09-hex}}", /* base09 */
++	[17] = "#{{base0F-hex}}", /* base0F */
++	[18] = "#{{base01-hex}}", /* base01 */
++	[19] = "#{{base02-hex}}", /* base02 */
++	[20] = "#{{base04-hex}}", /* base04 */
++	[21] = "#{{base06-hex}}", /* base06 */
+ 
+ 	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+ };
+ 
+ 
+diff --git a/x.c b/x.c
+index 120e495..da3ec4b 100644
+--- a/x.c
++++ b/x.c
+@@ -754,7 +754,7 @@ xloadcolor(int i, const char *name, Color *ncolor)
+ 	XRenderColor color = { .alpha = 0xffff };
+ 
+ 	if (!name) {
+-		if (BETWEEN(i, 16, 255)) { /* 256 color */
++		if (BETWEEN(i, 22, 255)) { /* 256 color */
+ 			if (i < 6*6*6+16) { /* same colors as xterm */
+ 				color.red   = sixd_to_16bit( ((i-16)/36)%6 );
+ 				color.green = sixd_to_16bit( ((i-16)/6) %6 );
