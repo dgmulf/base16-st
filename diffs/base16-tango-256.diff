@@ -1,0 +1,78 @@
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..d19e599 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,33 +93,39 @@ char *termname = "st-256color";
+  */
+ unsigned int tabspaces = 8;
+ 
+-/* Terminal colors (16 first used in escape sequence) */
++/* Terminal colors (16 first used in escape sequence)
++ * Base16 Tango scheme by @Schnouki, based on the Tango Desktop Project
++ */
+ static const char *colorname[] = {
+ 	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++	[0] = "#2e3436", /* base00 */
++	[1] = "#cc0000", /* base08 */
++	[2] = "#4e9a06", /* base0B */
++	[3] = "#c4a000", /* base0A */
++	[4] = "#3465a4", /* base0D */
++	[5] = "#75507b", /* base0E */
++	[6] = "#06989a", /* base0C */
++	[7] = "#d3d7cf", /* base05 */
+ 
+ 	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
++	[8] = "#555753", /* base03 */
++	[9] = "#cc0000", /* base08 */
++	[10] = "#4e9a06", /* base0B */
++	[11] = "#c4a000", /* base0A */
++	[12] = "#3465a4", /* base0D */
++	[13] = "#75507b", /* base0E */
++	[14] = "#06989a", /* base0C */
++	[15] = "#eeeeec", /* base0F */
++
++	/* extra base16 colors */
++	[16] = "#ef2929", /* base09 */
++	[17] = "#34e2e2", /* base0F */
++	[18] = "#8ae234", /* base01 */
++	[19] = "#fce94f", /* base02 */
++	[20] = "#729fcf", /* base04 */
++	[21] = "#ad7fa8", /* base06 */
+ 
+ 	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+ };
+ 
+ 
+diff --git a/x.c b/x.c
+index 120e495..da3ec4b 100644
+--- a/x.c
++++ b/x.c
+@@ -754,7 +754,7 @@ xloadcolor(int i, const char *name, Color *ncolor)
+ 	XRenderColor color = { .alpha = 0xffff };
+ 
+ 	if (!name) {
+-		if (BETWEEN(i, 16, 255)) { /* 256 color */
++		if (BETWEEN(i, 22, 255)) { /* 256 color */
+ 			if (i < 6*6*6+16) { /* same colors as xterm */
+ 				color.red   = sixd_to_16bit( ((i-16)/36)%6 );
+ 				color.green = sixd_to_16bit( ((i-16)/6) %6 );

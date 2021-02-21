@@ -10,7 +10,7 @@ index 0e01717..c288227 100644
 +/*
 + * Terminal colors (16 first used in escape sequence)
 + * Base16 st template by Daniel Mulford
-+ * Synth Midnight Dark scheme by Michaël Ball (http://github.com/michael-ball/)
++ * Synth Midnight Terminal Dark scheme by Michaël Ball (http://github.com/michael-ball/)
 + */
  static const char *colorname[] = {
 -	/* 8 normal colors */
@@ -23,14 +23,14 @@ index 0e01717..c288227 100644
 -	"cyan3",
 -	"gray90",
 +    /* 8 normal colors */
-+	[0] = "#040404", /* black   */
-+	[1] = "#B53B50", /* red     */
-+	[2] = "#06EA61", /* green   */
-+	[3] = "#DAE84D", /* yellow  */
-+	[4] = "#03AEFF", /* blue    */
-+	[5] = "#EA5CE2", /* magenta */
-+	[6] = "#7CEDE9", /* cyan    */
-+	[7] = "#DFDBDF", /* white   */
++	[0] = "#050608", /* black   */
++	[1] = "#b53b50", /* red     */
++	[2] = "#06ea61", /* green   */
++	[3] = "#c9d364", /* yellow  */
++	[4] = "#03aeff", /* blue    */
++	[5] = "#ea5ce2", /* magenta */
++	[6] = "#42fff9", /* cyan    */
++	[7] = "#c1c3c4", /* white   */
  
  	/* 8 bright colors */
 -	"gray50",
@@ -41,14 +41,14 @@ index 0e01717..c288227 100644
 -	"magenta",
 -	"cyan",
 -	"white",
-+	[8]  = "#61507A", /* black   */
-+	[9]  = "#B53B50", /* red     */
-+	[10] = "#06EA61", /* green   */
-+	[11] = "#DAE84D", /* yellow  */
-+	[12] = "#03AEFF", /* blue    */
-+	[13] = "#EA5CE2", /* magenta */
-+	[14] = "#7CEDE9", /* cyan    */
-+	[15] = "#FFFBFF", /* white   */
++	[8]  = "#474849", /* black   */
++	[9]  = "#b53b50", /* red     */
++	[10] = "#06ea61", /* green   */
++	[11] = "#c9d364", /* yellow  */
++	[12] = "#03aeff", /* blue    */
++	[13] = "#ea5ce2", /* magenta */
++	[14] = "#42fff9", /* cyan    */
++	[15] = "#dddfe0", /* white   */
  
  	[255] = 0,
  

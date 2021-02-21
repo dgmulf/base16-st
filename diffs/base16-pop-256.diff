@@ -1,0 +1,78 @@
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..d19e599 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,33 +93,39 @@ char *termname = "st-256color";
+  */
+ unsigned int tabspaces = 8;
+ 
+-/* Terminal colors (16 first used in escape sequence) */
++/* Terminal colors (16 first used in escape sequence)
++ * Base16 Pop scheme by Chris Kempson (http://chriskempson.com)
++ */
+ static const char *colorname[] = {
+ 	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++	[0] = "#000000", /* base00 */
++	[1] = "#eb008a", /* base08 */
++	[2] = "#37b349", /* base0B */
++	[3] = "#f8ca12", /* base0A */
++	[4] = "#0e5a94", /* base0D */
++	[5] = "#b31e8d", /* base0E */
++	[6] = "#00aabb", /* base0C */
++	[7] = "#d0d0d0", /* base05 */
+ 
+ 	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
++	[8] = "#505050", /* base03 */
++	[9] = "#eb008a", /* base08 */
++	[10] = "#37b349", /* base0B */
++	[11] = "#f8ca12", /* base0A */
++	[12] = "#0e5a94", /* base0D */
++	[13] = "#b31e8d", /* base0E */
++	[14] = "#00aabb", /* base0C */
++	[15] = "#ffffff", /* base0F */
++
++	/* extra base16 colors */
++	[16] = "#f29333", /* base09 */
++	[17] = "#7a2d00", /* base0F */
++	[18] = "#202020", /* base01 */
++	[19] = "#303030", /* base02 */
++	[20] = "#b0b0b0", /* base04 */
++	[21] = "#e0e0e0", /* base06 */
+ 
+ 	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+ };
+ 
+ 
+diff --git a/x.c b/x.c
+index 120e495..da3ec4b 100644
+--- a/x.c
++++ b/x.c
+@@ -754,7 +754,7 @@ xloadcolor(int i, const char *name, Color *ncolor)
+ 	XRenderColor color = { .alpha = 0xffff };
+ 
+ 	if (!name) {
+-		if (BETWEEN(i, 16, 255)) { /* 256 color */
++		if (BETWEEN(i, 22, 255)) { /* 256 color */
+ 			if (i < 6*6*6+16) { /* same colors as xterm */
+ 				color.red   = sixd_to_16bit( ((i-16)/36)%6 );
+ 				color.green = sixd_to_16bit( ((i-16)/6) %6 );

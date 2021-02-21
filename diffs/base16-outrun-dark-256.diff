@@ -1,0 +1,78 @@
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..d19e599 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,33 +93,39 @@ char *termname = "st-256color";
+  */
+ unsigned int tabspaces = 8;
+ 
+-/* Terminal colors (16 first used in escape sequence) */
++/* Terminal colors (16 first used in escape sequence)
++ * Base16 Outrun Dark scheme by Hugo Delahousse (http://github.com/hugodelahousse/)
++ */
+ static const char *colorname[] = {
+ 	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++	[0] = "#00002a", /* base00 */
++	[1] = "#ff4242", /* base08 */
++	[2] = "#59f176", /* base0B */
++	[3] = "#f3e877", /* base0A */
++	[4] = "#66b0ff", /* base0D */
++	[5] = "#f10596", /* base0E */
++	[6] = "#0ef0f0", /* base0C */
++	[7] = "#d0d0fa", /* base05 */
+ 
+ 	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
++	[8] = "#50507a", /* base03 */
++	[9] = "#ff4242", /* base08 */
++	[10] = "#59f176", /* base0B */
++	[11] = "#f3e877", /* base0A */
++	[12] = "#66b0ff", /* base0D */
++	[13] = "#f10596", /* base0E */
++	[14] = "#0ef0f0", /* base0C */
++	[15] = "#f5f5ff", /* base0F */
++
++	/* extra base16 colors */
++	[16] = "#fc8d28", /* base09 */
++	[17] = "#f003ef", /* base0F */
++	[18] = "#20204a", /* base01 */
++	[19] = "#30305a", /* base02 */
++	[20] = "#b0b0da", /* base04 */
++	[21] = "#e0e0ff", /* base06 */
+ 
+ 	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+ };
+ 
+ 
+diff --git a/x.c b/x.c
+index 120e495..da3ec4b 100644
+--- a/x.c
++++ b/x.c
+@@ -754,7 +754,7 @@ xloadcolor(int i, const char *name, Color *ncolor)
+ 	XRenderColor color = { .alpha = 0xffff };
+ 
+ 	if (!name) {
+-		if (BETWEEN(i, 16, 255)) { /* 256 color */
++		if (BETWEEN(i, 22, 255)) { /* 256 color */
+ 			if (i < 6*6*6+16) { /* same colors as xterm */
+ 				color.red   = sixd_to_16bit( ((i-16)/36)%6 );
+ 				color.green = sixd_to_16bit( ((i-16)/6) %6 );

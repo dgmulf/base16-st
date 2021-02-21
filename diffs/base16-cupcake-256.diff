@@ -1,0 +1,78 @@
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..d19e599 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,33 +93,39 @@ char *termname = "st-256color";
+  */
+ unsigned int tabspaces = 8;
+ 
+-/* Terminal colors (16 first used in escape sequence) */
++/* Terminal colors (16 first used in escape sequence)
++ * Base16 Cupcake scheme by Chris Kempson (http://chriskempson.com)
++ */
+ static const char *colorname[] = {
+ 	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++	[0] = "#fbf1f2", /* base00 */
++	[1] = "#d57e85", /* base08 */
++	[2] = "#a3b367", /* base0B */
++	[3] = "#dcb16c", /* base0A */
++	[4] = "#7297b9", /* base0D */
++	[5] = "#bb99b4", /* base0E */
++	[6] = "#69a9a7", /* base0C */
++	[7] = "#8b8198", /* base05 */
+ 
+ 	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
++	[8] = "#bfb9c6", /* base03 */
++	[9] = "#d57e85", /* base08 */
++	[10] = "#a3b367", /* base0B */
++	[11] = "#dcb16c", /* base0A */
++	[12] = "#7297b9", /* base0D */
++	[13] = "#bb99b4", /* base0E */
++	[14] = "#69a9a7", /* base0C */
++	[15] = "#585062", /* base0F */
++
++	/* extra base16 colors */
++	[16] = "#ebb790", /* base09 */
++	[17] = "#baa58c", /* base0F */
++	[18] = "#f2f1f4", /* base01 */
++	[19] = "#d8d5dd", /* base02 */
++	[20] = "#a59daf", /* base04 */
++	[21] = "#72677e", /* base06 */
+ 
+ 	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+ };
+ 
+ 
+diff --git a/x.c b/x.c
+index 120e495..da3ec4b 100644
+--- a/x.c
++++ b/x.c
+@@ -754,7 +754,7 @@ xloadcolor(int i, const char *name, Color *ncolor)
+ 	XRenderColor color = { .alpha = 0xffff };
+ 
+ 	if (!name) {
+-		if (BETWEEN(i, 16, 255)) { /* 256 color */
++		if (BETWEEN(i, 22, 255)) { /* 256 color */
+ 			if (i < 6*6*6+16) { /* same colors as xterm */
+ 				color.red   = sixd_to_16bit( ((i-16)/36)%6 );
+ 				color.green = sixd_to_16bit( ((i-16)/6) %6 );
